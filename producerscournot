@@ -1,0 +1,28 @@
+from compecon import NLP, gridmake
+from compecon.demos import demo
+
+alpha=0.0625
+Beta = np.array([0.6, 0.8])
+
+def market (q):
+quantity = q.sum()
+price = quantity ** (-alpha)
+return price, quantity
+
+def cournot (q):
+P, Q = market(q)
+P1 = -alpha * P/Q
+P2 = (-alpha — 1) * P1 / Q
+fval = P + (P1 — beta) * q
+fjac = np.diag(2*P1 + P2*q — beta) + np.fliplr(np.diag(P1 + P2*q))
+return fval, fjac
+
+q = np.array([0.2, 0.2])
+for it in range(40):
+ f, J = cournot(q)
+ step = -np.linalg.solve(J, f)
+ q += step
+ if np.linalg.norm(step) < 1.e-10: break
+price, quantity = market(q)print(f’\nCompany 1 produces {q[0]:.4f} units, while’ +
+f’ company 2 produces {q[1]:.4f} units.’)}
+print(f’Total production is {quantity:.4f} and price is {price:.4f}’)
