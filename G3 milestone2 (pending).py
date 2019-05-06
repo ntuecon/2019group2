@@ -250,21 +250,43 @@ class Equlibrium(Economy):
         
 #What mentioned below are only the contour of the idea to reach the equilibrium(excess demand =0), not the precise notataion and code
     
-    def excess_demand(w,r,goods_consumed,total_output):
-        return goods_consumed - total_output
-        price = optimize.fsolve(lambda x:excess_demand(w,r,goods_consumed,total_output))
-        print price
+if self.externality = False:
     
-    def excess_demand_onlabor(w,r,labor_supplied,labor_demanded):
-        return labor_demanded - labor_supplied
-        wage = optimize.fsolve(lambda x:excess_demand_onlabor(w,r,labor_supplied,labor_demanded))
-        print wage
     
-    def excess_demand_oncapital(w,r,capital_supplied,capital_demanded):
-        return capital_demanded - capital_supplied
-        rental = optimize.fsolve(lambda x:excess_demand_oncapital(w,r,capital_supplied,capital_demanded))
-        print rental
-     
+    
+    def excess_demand(self.,w,r,"""goods_consumed""", self.maximizedoutput_noe):
+        w = Symbol('w')
+        r = Symbol('r')
+        solve("""goods_consumed""" - self.maximizedoutput_noe,w,r)
+        
+    def excess_demand_onlabor(w,r,"""labor_supplied""",self.maximized_factors_noe):
+        w = Symbol('w')
+        r = Symbol('r')
+        solve("""labor_supplied""" - total_factors_labor_noe,w,r)
+    
+    def excess_demand_oncapital(w,r,"""capital_supplied""",self.maximized_factors_noe):
+        w = Symbol('w')
+        r = Symbol('r')
+        solve("""capital_supplied""" - total_factors_capital_noe,w,r)
+
+#The 3 market equilibrium under externality
+else:
+    def excess_demand(self.,w,r,"""goods_consumed""", self.maximizedoutput_e):
+        w = Symbol('w')
+        r = Symbol('r')
+        solve("""goods_consumed""" - self.maximizedoutput_e,w,r)
+        
+    def excess_demand_onlabor(w,r,"""labor_supplied""",self.maximized_factors_e):
+        w = Symbol('w')
+        r = Symbol('r')
+        solve("""labor_supplied""" - total_factors_labor_e,w,r)
+    
+    
+    def excess_demand_oncapital(w,r,"""capital_supplied""",self.maximized_factors_e):
+        w = Symbol('w')
+        r = Symbol('r')
+        solve("""capital_supplied""" - total_factors_capital_e,w,r)
+         
          
     
              
