@@ -91,7 +91,7 @@ class Producer(object):
 #The second Part: Conusmer 
 class Consumer(object):
     
-    def _init_(self,pr,cr):
+    def __init__(self,pr,cr):
         #pr: number of producers (where each producer produces only 1 type of good)
         #cr: number of consumers (where each consumer provide only 1 type of factor)
         #dict is the collection of all the parameters
@@ -114,19 +114,19 @@ class Consumer(object):
         
         
         
-    def utility(self,general_list):
+    def utility(self):
          # utility of the goods consumed in a array form
          goods_utility = 0
          for i in range(0,self.pr):
         # B is a random variable from [0,1], append each consumer's utility from both goods.
-            goods_utility += self.gl[i] ** self.psi
+            goods_utility += self.gl[i] ** self.dict['psi']
     
         
         # factor dis-utility when providing k & l to producers for production
         
          labors_utility = 0
          for i in range(0 + self.pr, self.pr +self.pr):
-             labors_utility[i] = self.beta* self.gl[i] ** self.delta
+             labors_utility += self.dict['beta']* self.gl[i] ** self.dict['delta']
                 
         # sum the utility - sum of factor disutility
          total_utility = goods_utility - labors_utility
@@ -134,7 +134,7 @@ class Consumer(object):
          return (-1)* total_utility
 
           
-    def constraint(self, general_list, pi,p,w,t):
+    def constraint(self,pi,p,w,t):
         
         # pi: profits shares from two producers
         # total amount paid for goods
@@ -224,7 +224,7 @@ pr = int(raw_input("Number of producers: "))
 cr = int(raw_input("Number of consumers: "))
 
 test = Economy(pr,cr)
-print test.objective()
+print test.equilibrium
 
     
     
