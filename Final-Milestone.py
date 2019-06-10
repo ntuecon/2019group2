@@ -11,6 +11,12 @@ import numpy as np
 from scipy.optimize import minimize
 
 
+global p
+p = 1
+global w
+w = 1
+global t
+t = 1
 
 #The first part:producer 
 class Producer(object):
@@ -181,7 +187,7 @@ class Economy(object):
         self.pr = pr
         self.cr = cr
     
-    def objective(self):  
+    def objective(self,a):  
         a = Producer
         b = Consumer
         ex_post_array_pro = np.empty(self.pr + self.pr * self.cr)
@@ -224,7 +230,7 @@ pr = int(raw_input("Number of producers: "))
 cr = int(raw_input("Number of consumers: "))
 
 test = Economy(pr,cr)
-print test.equilibrium
+print test.equilibrium()
 
     
     
